@@ -115,11 +115,11 @@ warnings.filterwarnings("ignore")
 
 # Prepare Monthly Sales Data
 
-df["Order Date"] = pd.to_datetime(df["Order Date"], dayfirst=True)
+df["Order Date"] = pd.to_datetime(df["Order Date"], dayfirst=True, errors="coerce")
 
 monthly_sales = (
     df.set_index("Order Date")["Sales"]
-    .resample("M")
+    .resample("ME")
     .sum()
     .reset_index()
 )
