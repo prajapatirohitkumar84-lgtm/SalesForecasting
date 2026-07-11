@@ -266,7 +266,7 @@ months = st.slider(
 # Monthly sales
 forecast_data = (
     filtered
-    .groupby(pd.Grouper(key="Order Date", freq="M"))["Sales"]
+    .groupby(pd.Grouper(key="Order Date", freq="ME"))["Sales"]
     .sum()
     .reset_index()
 )
@@ -282,7 +282,7 @@ for i in range(months):
 future_dates = pd.date_range(
     forecast_data["Order Date"].max() + pd.offsets.MonthBegin(),
     periods=months,
-    freq="M"
+    freq="ME"
 )
 forecast_df = pd.DataFrame({
     "Order Date": future_dates,
@@ -429,7 +429,7 @@ print("\n----------Sales volatility (standard deviation of monthly sales)-------
 
 # Calculate monthly sales volatility
 volatility = (
-    df.groupby(["Sub-Category", pd.Grouper(key="Order Date", freq="M")])["Sales"]
+    df.groupby(["Sub-Category", pd.Grouper(key="Order Date", freq="ME")])["Sales"]
       .sum()
       .groupby("Sub-Category")
       .std()
