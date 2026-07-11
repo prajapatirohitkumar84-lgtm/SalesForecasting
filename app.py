@@ -41,7 +41,7 @@ st.set_page_config(
 )
 st.title("📊 Sales Overview Dashboard")
 # Load Dataset
-df = pd.read_csv(r"D:\Project\SalesForecasting_[Rohit Kumar Prajapati]\train.csv")
+df = pd.read_csv("train.csv")
 # Convert Date
 df["Order Date"] = pd.to_datetime(df["Order Date"], dayfirst=True)
 # Create Year and Month Columns
