@@ -1,0 +1,13 @@
+| Library     | Purpose                                                                                                               |
+| ----------- | --------------------------------------------------------------------------------------------------------------------- |
+| pandas      | Load, clean, manipulate, and analyze the sales dataset.                                                               |
+| numpy       | Perform numerical calculations and array operations.                                                                  |
+| matplotlib  | Create static charts and visualizations.                                                                              |
+| seaborn     | Generate statistical plots for exploratory data analysis (EDA).                                                       |
+| plotly      | Build interactive charts for the Streamlit dashboard.                                                                 |
+| scikit-learn| Perform machine learning tasks such as K-Means Clustering, Isolation Forest, PCA, data scaling, and model evaluation. |
+| xgboost     | Train the XGBoost regression model for sales forecasting.                                                             |
+| statsmodels | Perform time series decomposition, ADF test, and build the SARIMA forecasting model.                                  |
+| prophet     | Build the Prophet forecasting model for time series prediction.                                                       |
+| streamlit   | Develop and deploy the interactive web dashboard.                                                                     |
+| joblib      | Save and load trained machine learning models.                                                                        |                                                                     |
