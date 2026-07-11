@@ -19,7 +19,7 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 # Load Superstore Sales Dataset
-df = pd.read_csv(r"D:\Project\SalesForecasting_[Rohit Kumar Prajapati]\train.csv")
+df = pd.read_csv("train.csv")
 # Display first five rows
 df.head()
 
