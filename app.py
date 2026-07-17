@@ -350,11 +350,22 @@ elif page == "📊 Sales Overview":
     # ==========================
     # MONTHLY SALES
     # ==========================
-
+    
     monthly = filtered_df.copy()
-
-    monthly["Month"] = monthly["Order Date"].dt.to_period("ME").astype(str)
-
+    
+    # Order Date ko datetime me convert karo
+    monthly["Order Date"] = pd.to_datetime(
+    monthly["Order Date"],
+    errors="coerce"
+    )
+    
+    # Invalid dates hata do
+    monthly = monthly.dropna(subset=["Order Date"])
+        
+    # Month column banao
+    monthly["Month"] = monthly["Order Date"].dt.to_period("M").astype(str)
+        
+    # Monthly sales
     monthly = (
         monthly.groupby("Month")["Sales"]
         .sum()
@@ -368,13 +379,11 @@ elif page == "📊 Sales Overview":
         markers=True,
         title="Monthly Sales Trend"
     )
-
+    
     st.plotly_chart(
         fig,
         use_container_width=True
     )
-
-    st.divider()
 
     # ==========================
     # TOP 10 PRODUCTS
