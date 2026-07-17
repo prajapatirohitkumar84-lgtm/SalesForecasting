@@ -640,7 +640,13 @@ This helps identify abnormal sales transactions that may require investigation.
 
     anomaly_df = df.copy()
 
-    anomaly_df["Order Date"] = pd.to_datetime(anomaly_df["Order Date"])
+    anomaly_df["Order Date"] = pd.to_datetime(
+    anomaly_df["Order Date"],
+    errors="coerce",
+    format="mixed"
+    )
+
+    anomaly_df = anomaly_df.dropna(subset=["Order Date"])
 
     anomaly_df = anomaly_df.sort_values("Order Date")
 
