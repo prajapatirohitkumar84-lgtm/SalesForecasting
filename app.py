@@ -346,7 +346,7 @@ elif page == "📊 Sales Overview":
 
     monthly = filtered_df.copy()
 
-    monthly["Month"] = monthly["Order Date"].dt.to_period("M").astype(str)
+    monthly["Month"] = monthly["Order Date"].dt.to_period("ME").astype(str)
 
     monthly = (
         monthly.groupby("Month")["Sales"]
