@@ -18,7 +18,29 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
 
+st.set_page_config(
+    page_title="Sales Forecasting Dashboard",
+    page_icon="📊",
+    layout="wide"
+)
 
+@st.cache_data
+def load_data():
+    return pd.read_csv("train.csv")
+
+df = load_data()
+
+page = st.sidebar.selectbox(
+    "Select Dashboard",
+    [
+        "🏠 Home",
+        "📊 Sales Overview",
+        "📈 Forecast",
+        "🚨 Anomaly Detection",
+        "📦 Product Analysis",
+        "💼 Business Insights"
+    ]
+)
 # ==========================================================
 # HOME PAGE
 # ==========================================================
@@ -786,7 +808,6 @@ This helps identify abnormal sales transactions that may require investigation.
 
     )
 
-"📦 Product Analysis"
 # ==========================================================
 # PRODUCT ANALYSIS
 # ==========================================================
@@ -1122,7 +1143,6 @@ Regions and Top Selling Products.
 
     )
 
-"💼 Business Insights"
 
 # ==========================================================
 # BUSINESS INSIGHTS DASHBOARD
