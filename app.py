@@ -185,7 +185,7 @@ regional performance, and future sales forecasting using Machine Learning.
 
     monthly_sales = (
         df.groupby(
-            df["Order Date"].dt.to_period("M")
+            df["Order Date"].dt.to_period("ME")
         )["Sales"]
         .sum()
         .reset_index()
