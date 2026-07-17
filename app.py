@@ -475,7 +475,13 @@ elif page == "📈 Forecast":
 
     forecast_df = df.copy()
 
-    forecast_df["Order Date"] = pd.to_datetime(forecast_df["Order Date"])
+    forecast_df["Order Date"] = pd.to_datetime(
+    forecast_df["Order Date"],
+    errors="coerce",
+    format="mixed"
+)
+
+forecast_df = forecast_df.dropna(subset=["Order Date"])
 
     monthly_sales = (
         forecast_df
