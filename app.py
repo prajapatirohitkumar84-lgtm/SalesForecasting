@@ -179,13 +179,20 @@ regional performance, and future sales forecasting using Machine Learning.
 
     st.divider()
 
+    df["Order Date"] = pd.to_datetime(
+    df["Order Date"],
+    errors="coerce",
+    format="mixed"
+    )
+
+    df = df.dropna(subset=["Order Date"])
     # -----------------------------
     # Monthly Sales Trend
     # -----------------------------
 
     monthly_sales = (
         df.groupby(
-            df["Order Date"].dt.to_period("ME")
+            df["Order Date"].dt.to_period("M")
         )["Sales"]
         .sum()
         .reset_index()
