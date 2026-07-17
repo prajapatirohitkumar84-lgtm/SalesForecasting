@@ -484,12 +484,13 @@ elif page == "📈 Forecast":
     forecast_df = forecast_df.dropna(subset=["Order Date"])
 
     monthly_sales = (
-        forecast_df
-        .groupby(pd.Grouper(key="Order Date", freq="M"))["Sales"]
-        .sum()
-        .reset_index()
+    forecast_df
+    .groupby(forecast_df["Order Date"].dt.to_period("M"))["Sales"]
+    .sum()
+    .reset_index()
     )
 
+    monthly_sales["Order Date"] = monthly_sales["Order Date"].astype(str)
     st.subheader("Monthly Sales")
 
     fig = px.line(
