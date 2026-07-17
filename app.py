@@ -62,7 +62,12 @@ regional performance, and future sales forecasting using Machine Learning.
     # Data Preparation
     # -----------------------------
 
-    df["Order Date"] = pd.to_datetime(df["Order Date"])
+    df["Order Date"] = pd.to_datetime(
+    df["Order Date"],
+    errors="coerce",
+    format="mixed"
+   )
+    df = df.dropna(subset=["Order Date"])
 
     total_sales = df["Sales"].sum()
 
