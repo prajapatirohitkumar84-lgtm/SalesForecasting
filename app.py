@@ -521,13 +521,15 @@ elif page == "📈 Forecast":
     # -----------------------------
 
     avg_sales = monthly_sales["Sales"].tail(6).mean()
-
+    
+    monthly_sales["Order Date"] = pd.to_datetime(monthly_sales["Order Date"])
+    
     last_date = monthly_sales["Order Date"].max()
 
     future_dates = pd.date_range(
-        start=last_date + pd.offsets.MonthBegin(1),
-        periods=forecast_months,
-        freq="M"
+    start=last_date + pd.offsets.MonthBegin(1),
+    periods=forecast_months,
+    freq="ME"
     )
 
     future_df = pd.DataFrame({
