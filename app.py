@@ -479,9 +479,9 @@ elif page == "📈 Forecast":
     forecast_df["Order Date"],
     errors="coerce",
     format="mixed"
-)
+    )
 
-forecast_df = forecast_df.dropna(subset=["Order Date"])
+    forecast_df = forecast_df.dropna(subset=["Order Date"])
 
     monthly_sales = (
         forecast_df
